@@ -17,6 +17,8 @@ int arteSnake[5][8] = { {4080, 12300, 12300, 240, 3840, 12300, 12300, 4080},	/* 
 
 void menu() {
 
+	limpaTela();
+
 	int tecla;
 	imprimeBordasDoMenu();
 	imprimePalavraSnake();
@@ -25,8 +27,7 @@ void menu() {
 	switch (opcao) {
 	case 1:
 		limpaTela();
-		printf("AQUI E O JOGO!");
-		//jogarCobrinha();
+		jogar();
 		do {
 			if (_kbhit) { tecla = teclaPrecionada(); }
 		} while (tecla != KEY_ESC);
@@ -51,6 +52,7 @@ void menu() {
 	default:
 		break;
 	}
+	menu();
 }
 
 int selecionaOpcao() {

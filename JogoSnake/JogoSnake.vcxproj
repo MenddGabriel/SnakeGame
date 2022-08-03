@@ -123,14 +123,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Colisao.c" />
+    <ClCompile Include="Direcao.c" />
+    <ClCompile Include="Mapa.c" />
     <ClCompile Include="Menu.c" />
     <ClCompile Include="Origem.c" />
+    <ClCompile Include="Posicao.c" />
     <ClCompile Include="Teclas.c" />
     <ClCompile Include="Tela.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Colisao.h" />
     <ClInclude Include="Cores.h" />
+    <ClInclude Include="Direcao.h" />
+    <ClInclude Include="Mapa.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Posicao.h" />
     <ClInclude Include="Teclas.h" />
     <ClInclude Include="Tela.h" />
   </ItemGroup>
