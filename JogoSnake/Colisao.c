@@ -2,11 +2,15 @@
 #include "Colisao.h"
 #include "Posicao.h"
 
-BOOL verificarColisao(POSICAO *posicao) {
+char verificaObstaculo(POSICAO *posicao, DIRECAO *direcao) {
+	int novaPosX = posicao->posX + direcao->incrementaX;
+	int novaPosY = posicao->posY + direcao->incrementaY;
 
-	if (posicao->posX > 5 && posicao->posX < 144 && posicao->posY > 2 && posicao->posY < 38) {
-		return TRUE;
-	}
+	return lerCaractereDaTela(novaPosX, novaPosY);
+}
 
-	return FALSE;
+BOOL verificarColisao(char cabecaSnake) {
+
+	return (cabecaSnake != ' ' && cabecaSnake != '@');
+
 }

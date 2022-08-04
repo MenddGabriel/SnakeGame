@@ -3,14 +3,26 @@
 #include "Tela.h"
 
 void reposicionaCursor() {
-	gotoxy(149, 39);
+	gotoxy(NULL,149, 39);
 }
 
-void gotoxy(int x, int y) {
-	COORD c;
-	c.X = x;
-	c.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+void gotoxy(char c, int x, int y) {
+	COORD coord;
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+
+	putchar(c);
+
+}
+
+char lerCaractereDaTela(int x, int y) {
+	char buf[2];
+	COORD coord = { x,y };
+	DWORD num_read;
+	HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);
+	ReadConsoleOutputCharacter(hStd, (LPTSTR)buf, 1, coord, (LPDWORD)&num_read);
+	return buf[0];
 }
 
 /* LIMPA O CONSOLE */

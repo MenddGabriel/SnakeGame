@@ -1,4 +1,5 @@
 #pragma once
 #include "Posicao.h"
 
-BOOL verificarColisao(POSICAO *posicao);
+BOOL verificarColisao(char elm);
+char verificaObstaculo(POSICAO *posicao, DIRECAO *direcao);

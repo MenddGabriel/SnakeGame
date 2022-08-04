@@ -10,9 +10,15 @@
 POSICAO *criaPosicao() {
 
 	POSICAO *posicao = (POSICAO*)malloc(sizeof(POSICAO));
-
-	posicao->posX = 5 + rand() % 143;
-	posicao->posY = 3 + rand() % 35;
+	
+	int x = 5 + rand() % 136;
+	int y = 3 + rand() % 34;
+	if (x % 2 == 0) {
+		x++;
+	}
+		
+	posicao->posX = x;
+	posicao->posY = y;
 
 	return posicao;
 
@@ -25,14 +31,14 @@ void atualizaPosicaoSnake(POSICAO *posicao, DIRECAO *direcao) {
 	int apaga_x = x;
 	int apaga_y = y;
 
-	gotoxy(x, y);
+	gotoxy(NULL, x, y);
 
 	printf(ANSI_COLOR_VERDE "%c%c" ANSI_COLOR_RESET, 219, 219);
 	reposicionaCursor();
 
 	Sleep(40);
 
-	gotoxy(x, y);
+	gotoxy(NULL,x, y);
 	printf("  ");
 
 }

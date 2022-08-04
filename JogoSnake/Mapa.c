@@ -8,15 +8,17 @@ void iniciaMapa() {
 	int bordaEsquerda = 4;
 	int bordaDireita = 145;
 
-	for (i = bordaSuperior; i < bordaInferior; i++) {
-		gotoxy(bordaEsquerda, i); printf("%c", 219); /* █ */
-		gotoxy(bordaDireita, i); printf("%c", 219); /* █ */
+	for (i = bordaSuperior; i <= bordaInferior; i++) {
+		gotoxy(219, bordaEsquerda, i);
+		gotoxy(219, bordaEsquerda - 1, i);
+		gotoxy(219, bordaDireita, i);
+		gotoxy(219, bordaDireita + 1, i);
 
 	}
 
 	for (i = bordaEsquerda; i <= bordaDireita; i++) {
-		gotoxy(i, bordaSuperior); printf("%c", 220); /* ▄ */
-		gotoxy(i, bordaInferior); printf("%c", 223); /* ▀ */
+		gotoxy(219, i, bordaSuperior);
+		gotoxy(219, i, bordaInferior);
 	}
 
 	reposicionaCursor();

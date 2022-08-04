@@ -4,6 +4,7 @@
 #define LARGURA_TELA 150
 
 void reposicionaCursor();
-void gotoxy(int x, int y);
+void gotoxy(char c, int x, int y);
+char lerCaractereDaTela(int x, int y);
 void limpaTela();
 void redimensionaJanela(int Width, int Height);

@@ -28,17 +28,20 @@ void jogar() {
 			atualizaDirecao(tecla, direcao);
 		}
 		
-		if (!verificarColisao(snakePos)) {
+		char cabecaColisao = verificaObstaculo(snakePos, direcao);
+
+		if (verificarColisao(cabecaColisao)) {
 			break;
 		}
 		else {
+			
 			atualizaPosicaoSnake(snakePos, direcao);
 		}
 
 
 	}
 	
-	gotoxy(0, 39);
+	gotoxy(NULL,0, 39);
 	printf("Ocorreu uma colisao!");
 }
 

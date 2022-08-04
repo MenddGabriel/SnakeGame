@@ -41,7 +41,7 @@ void menu() {
 		} while (tecla != KEY_ESC);
 		break;
 	case 3:
-		gotoxy(0, 39);
+		gotoxy(NULL, 0, 39);
 		printf("Voce pediu para sair, fechando programa...");
 		for (tecla = 0; tecla < 10; tecla++) {
 			printf(".");
@@ -99,32 +99,32 @@ void imprimeBotoesDoMenu(int selecionado) {
 	for (n = 0; n < botoes; n++) {
 
 		for (i = comprimentoInicial; i < comprimentoFinal; i++) {
-			gotoxy(i, alturaInicial);
+			gotoxy(NULL, i, alturaInicial);
 			printf("%c", n == selecionado ? 205 : 196); /* ═ ou ─ */
-			gotoxy(i, alturaMeio);
+			gotoxy(NULL, i, alturaMeio);
 			printf("%c", n == selecionado ? 176 : ' '); /* ░ ou ' '*/
-			gotoxy(i, alturaFinal);
+			gotoxy(NULL, i, alturaFinal);
 			printf("%c", n == selecionado ? 205 : 196); /* ═ ou ─*/
 		}
 
-		gotoxy(comprimentoInicial - 1, alturaInicial);
+		gotoxy(NULL, comprimentoInicial - 1, alturaInicial);
 		printf("%c", n == selecionado ? 201 : 218); /* ╔ ou ┌ */
-		gotoxy(comprimentoInicial - 1, alturaMeio);
+		gotoxy(NULL, comprimentoInicial - 1, alturaMeio);
 		printf("%c", n == selecionado ? 186 : 179); /* ║ ou │ */
-		gotoxy(comprimentoInicial - 1, alturaFinal);
+		gotoxy(NULL, comprimentoInicial - 1, alturaFinal);
 		printf("%c", n == selecionado ? 200 : 192); /* ╚ ou └*/
 
-		gotoxy(comprimentoFinal, alturaInicial);
+		gotoxy(NULL, comprimentoFinal, alturaInicial);
 		printf("%c", n == selecionado ? 187 : 191); /* ╗ ou ┐ */
-		gotoxy(comprimentoFinal, alturaMeio);
+		gotoxy(NULL, comprimentoFinal, alturaMeio);
 		printf("%c", n == selecionado ? 186 : 179); /* ║ ou │*/
-		gotoxy(comprimentoFinal, alturaFinal);
+		gotoxy(NULL, comprimentoFinal, alturaFinal);
 		printf("%c", n == selecionado ? 188 : 217); /* ╝ ou ┘*/
 
 
-		if (n == 0) { gotoxy(74, alturaMeio); printf("JOGAR"); }
-		else if (n == 1) { gotoxy(73, alturaMeio); printf("RANKING"); }
-		else { gotoxy(75, alturaMeio); printf("SAIR"); }
+		if (n == 0) { gotoxy(NULL, 74, alturaMeio); printf("JOGAR"); }
+		else if (n == 1) { gotoxy(NULL, 73, alturaMeio); printf("RANKING"); }
+		else { gotoxy(NULL, 75, alturaMeio); printf("SAIR"); }
 
 		alturaInicial += 3; alturaMeio += 3; alturaFinal += 3;
 	}
@@ -139,17 +139,17 @@ void imprimeBordasDoMenu() {
 	int bordaDireita = 145;
 
 	for (i = bordaSuperior + 1; i < bordaInferior; i++) { /* para imprimir as bordas esquerda e direita */
-		gotoxy(bordaEsquerda, i); printf("%c", 186); /* ║ */
-		gotoxy(bordaDireita, i); printf("%c", 186); /* ║ */
+		gotoxy(186, bordaEsquerda, i); //printf("%c", 186); /* ║ */
+		gotoxy(186, bordaDireita, i); //printf("%c", 186); /* ║ */
 	}
 	for (i = bordaEsquerda + 1; i < bordaDireita; i++) {  /* para imprimir as bordas superiores e inferiores */
-		gotoxy(i, bordaSuperior); printf("%c", 205); /* ═ */
-		gotoxy(i, bordaInferior); printf("%c", 205); /* ═ */
+		gotoxy(205, i, bordaSuperior); //printf("%c", 205); /* ═ */
+		gotoxy(205, i, bordaInferior); //printf("%c", 205); /* ═ */
 	}
-	gotoxy(bordaEsquerda, bordaSuperior); printf("%c", 201); /* ╔ */
-	gotoxy(bordaEsquerda, bordaInferior); printf("%c", 200); /* ╚ */
-	gotoxy(bordaDireita, bordaSuperior); printf("%c", 187); /* ╗ */
-	gotoxy(bordaDireita, bordaInferior); printf("%c", 188); /* ╝ */
+	gotoxy(201, bordaEsquerda, bordaSuperior); //printf("%c", 201); /* ╔ */
+	gotoxy(200, bordaEsquerda, bordaInferior); //printf("%c", 200); /* ╚ */
+	gotoxy(187, bordaDireita, bordaSuperior); //printf("%c", 187); /* ╗ */
+	gotoxy(188, bordaDireita, bordaInferior); //printf("%c", 188); /* ╝ */
 
 }
 
@@ -169,7 +169,7 @@ void imprimePalavraSnake() {
 
 		for (j = 0; j < 8; j++) { /* O caractere e de 8 linhas */
 
-			gotoxy(linha, coluna);
+			gotoxy(NULL,linha, coluna);
 			c = arteSnake[nLetra][j];
 
 			for (b = 0; b < tamanhoDaLetraEmBits; b++) { /* 16 bits */
