@@ -11,13 +11,17 @@
 #include "Posicao.h"
 #include "Mapa.h"
 #include "Colisao.h"
+#include "Maca.h"
 
 
 void jogar() {
 
 	iniciaMapa();
 	DIRECAO *direcao = criaDirecao();
-	POSICAO *snakePos = criaPosicao();
+	POSICAO *cobraPosicao = sorteiaPosicao(direcao);
+	MACA *maca = criaMaca();
+
+	atualizaMaca(maca);
 
 
 	int tecla = teclaPrecionada;
@@ -27,21 +31,25 @@ void jogar() {
 			tecla = teclaPrecionada();
 			atualizaDirecao(tecla, direcao);
 		}
-		
-		char cabecaColisao = verificaObstaculo(snakePos, direcao);
+
+		char cabecaColisao = verificaObstaculo(cobraPosicao, direcao);
 
 		if (verificarColisao(cabecaColisao)) {
 			break;
 		}
-		else {
-			
-			atualizaPosicaoSnake(snakePos, direcao);
+		
+		if (verificaMaca(cabecaColisao)) {
+			atualizaMaca(maca);
 		}
 
 
+			atualizaPosicaoSnake(cobraPosicao, direcao);
+		
+
+
 	}
-	
-	gotoxy(NULL,0, 39);
+
+	posicionaCursorNaTela(NULL, 0, 39);
 	printf("Ocorreu uma colisao!");
 }
 
@@ -53,7 +61,7 @@ int main() {
 	menu();
 
 
-	
+
 
 
 	_getch();

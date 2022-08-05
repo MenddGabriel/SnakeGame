@@ -1,6 +1,8 @@
-#include <windows.h>
+#include <Windows.h>
 #include "Colisao.h"
 #include "Posicao.h"
+#include "Mapa.h"
+#include "Maca.h"
 
 char verificaObstaculo(POSICAO *posicao, DIRECAO *direcao) {
 	int novaPosX = posicao->posX + direcao->incrementaX;
@@ -9,8 +11,8 @@ char verificaObstaculo(POSICAO *posicao, DIRECAO *direcao) {
 	return lerCaractereDaTela(novaPosX, novaPosY);
 }
 
-BOOL verificarColisao(char cabecaSnake) {
+BOOL verificarColisao(char objeto) {
 
-	return (cabecaSnake != ' ' && cabecaSnake != '@');
+	return (objeto != ESPACO_VAZIO && objeto != MACA_CHAR);
 
 }

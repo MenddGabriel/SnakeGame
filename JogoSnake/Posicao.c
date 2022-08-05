@@ -5,23 +5,36 @@
 #include "Direcao.h"
 #include "Cores.h"
 #include "Tela.h"
+#include "Colisao.h"
+#include "Mapa.h"
 
 
 POSICAO *criaPosicao() {
 
 	POSICAO *posicao = (POSICAO*)malloc(sizeof(POSICAO));
 	
-	int x = 5 + rand() % 136;
-	int y = 3 + rand() % 34;
-	if (x % 2 == 0) {
-		x++;
-	}
-		
-	posicao->posX = x;
-	posicao->posY = y;
+	posicao->proximo = NULL;
+	
+	return posicao;
+}
+
+POSICAO *sorteiaPosicao(DIRECAO *direcao) {
+	POSICAO *posicao = (POSICAO*)malloc(sizeof(POSICAO));
+	posicao->proximo = NULL;
+
+	do {
+		int x = 5 + rand() % 136;
+		int y = 3 + rand() % 34;
+		if (x % 2 == 0) {
+			x++;
+		}
+
+		posicao->posX = x;
+		posicao->posY = y;
+
+	} while (verificaObstaculo(posicao, direcao) != ESPACO_VAZIO);
 
 	return posicao;
-
 }
 
 void atualizaPosicaoSnake(POSICAO *posicao, DIRECAO *direcao) {
@@ -31,14 +44,15 @@ void atualizaPosicaoSnake(POSICAO *posicao, DIRECAO *direcao) {
 	int apaga_x = x;
 	int apaga_y = y;
 
-	gotoxy(NULL, x, y);
+	posicionaCursorNaTela(NULL, x, y);
 
 	printf(ANSI_COLOR_VERDE "%c%c" ANSI_COLOR_RESET, 219, 219);
-	reposicionaCursor();
+	reposicionaCursorNoFinal();
 
 	Sleep(40);
 
-	gotoxy(NULL,x, y);
+	posicionaCursorNaTela(NULL,x, y);
 	printf("  ");
 
 }
+

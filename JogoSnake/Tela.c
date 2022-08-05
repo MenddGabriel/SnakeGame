@@ -2,11 +2,11 @@
 
 #include "Tela.h"
 
-void reposicionaCursor() {
-	gotoxy(NULL,149, 39);
+void reposicionaCursorNoFinal() {
+	posicionaCursorNaTela(NULL, LARGURA_TELA - 1, ALTURA_TELA - 1);
 }
 
-void gotoxy(char c, int x, int y) {
+void posicionaCursorNaTela(char c, int x, int y) {
 	COORD coord;
 	coord.X = x;
 	coord.Y = y;

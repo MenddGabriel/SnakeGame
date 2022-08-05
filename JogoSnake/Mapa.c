@@ -8,18 +8,20 @@ void iniciaMapa() {
 	int bordaEsquerda = 4;
 	int bordaDireita = 145;
 
+	/* imprime as bordas inferior e superior do mapa */
 	for (i = bordaSuperior; i <= bordaInferior; i++) {
-		gotoxy(219, bordaEsquerda, i);
-		gotoxy(219, bordaEsquerda - 1, i);
-		gotoxy(219, bordaDireita, i);
-		gotoxy(219, bordaDireita + 1, i);
+		posicionaCursorNaTela(PAREDE, bordaEsquerda, i);
+		posicionaCursorNaTela(PAREDE, bordaEsquerda - 1, i);
+		posicionaCursorNaTela(PAREDE, bordaDireita, i);
+		posicionaCursorNaTela(PAREDE, bordaDireita + 1, i);
 
 	}
 
+	/* imprime as bordas esquerda e direita do mapa */
 	for (i = bordaEsquerda; i <= bordaDireita; i++) {
-		gotoxy(219, i, bordaSuperior);
-		gotoxy(219, i, bordaInferior);
+		posicionaCursorNaTela(PAREDE, i, bordaSuperior);
+		posicionaCursorNaTela(PAREDE, i, bordaInferior);
 	}
 
-	reposicionaCursor();
+	reposicionaCursorNoFinal();
 }

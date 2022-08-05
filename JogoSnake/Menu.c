@@ -23,7 +23,7 @@ void menu() {
 	imprimeBordasDoMenu();
 	imprimePalavraSnake();
 	int opcao = selecionaOpcao();
-	
+
 	switch (opcao) {
 	case 1:
 		limpaTela();
@@ -41,7 +41,7 @@ void menu() {
 		} while (tecla != KEY_ESC);
 		break;
 	case 3:
-		gotoxy(NULL, 0, 39);
+		posicionaCursorNaTela(NULL, 0, 39);
 		printf("Voce pediu para sair, fechando programa...");
 		for (tecla = 0; tecla < 10; tecla++) {
 			printf(".");
@@ -66,7 +66,7 @@ int selecionaOpcao() {
 	/* loop para movimentar o menu */
 	while (TRUE) {
 		imprimeBotoesDoMenu(select);
-		reposicionaCursor();
+		reposicionaCursorNoFinal();
 
 		if (_kbhit) { tecla = teclaPrecionada(); }
 
@@ -99,32 +99,32 @@ void imprimeBotoesDoMenu(int selecionado) {
 	for (n = 0; n < botoes; n++) {
 
 		for (i = comprimentoInicial; i < comprimentoFinal; i++) {
-			gotoxy(NULL, i, alturaInicial);
+			posicionaCursorNaTela(NULL, i, alturaInicial);
 			printf("%c", n == selecionado ? 205 : 196); /* ═ ou ─ */
-			gotoxy(NULL, i, alturaMeio);
+			posicionaCursorNaTela(NULL, i, alturaMeio);
 			printf("%c", n == selecionado ? 176 : ' '); /* ░ ou ' '*/
-			gotoxy(NULL, i, alturaFinal);
+			posicionaCursorNaTela(NULL, i, alturaFinal);
 			printf("%c", n == selecionado ? 205 : 196); /* ═ ou ─*/
 		}
 
-		gotoxy(NULL, comprimentoInicial - 1, alturaInicial);
+		posicionaCursorNaTela(NULL, comprimentoInicial - 1, alturaInicial);
 		printf("%c", n == selecionado ? 201 : 218); /* ╔ ou ┌ */
-		gotoxy(NULL, comprimentoInicial - 1, alturaMeio);
+		posicionaCursorNaTela(NULL, comprimentoInicial - 1, alturaMeio);
 		printf("%c", n == selecionado ? 186 : 179); /* ║ ou │ */
-		gotoxy(NULL, comprimentoInicial - 1, alturaFinal);
+		posicionaCursorNaTela(NULL, comprimentoInicial - 1, alturaFinal);
 		printf("%c", n == selecionado ? 200 : 192); /* ╚ ou └*/
 
-		gotoxy(NULL, comprimentoFinal, alturaInicial);
+		posicionaCursorNaTela(NULL, comprimentoFinal, alturaInicial);
 		printf("%c", n == selecionado ? 187 : 191); /* ╗ ou ┐ */
-		gotoxy(NULL, comprimentoFinal, alturaMeio);
+		posicionaCursorNaTela(NULL, comprimentoFinal, alturaMeio);
 		printf("%c", n == selecionado ? 186 : 179); /* ║ ou │*/
-		gotoxy(NULL, comprimentoFinal, alturaFinal);
+		posicionaCursorNaTela(NULL, comprimentoFinal, alturaFinal);
 		printf("%c", n == selecionado ? 188 : 217); /* ╝ ou ┘*/
 
 
-		if (n == 0) { gotoxy(NULL, 74, alturaMeio); printf("JOGAR"); }
-		else if (n == 1) { gotoxy(NULL, 73, alturaMeio); printf("RANKING"); }
-		else { gotoxy(NULL, 75, alturaMeio); printf("SAIR"); }
+		if (n == 0) { posicionaCursorNaTela(NULL, 74, alturaMeio); printf("JOGAR"); }
+		else if (n == 1) { posicionaCursorNaTela(NULL, 73, alturaMeio); printf("RANKING"); }
+		else { posicionaCursorNaTela(NULL, 75, alturaMeio); printf("SAIR"); }
 
 		alturaInicial += 3; alturaMeio += 3; alturaFinal += 3;
 	}
@@ -139,17 +139,17 @@ void imprimeBordasDoMenu() {
 	int bordaDireita = 145;
 
 	for (i = bordaSuperior + 1; i < bordaInferior; i++) { /* para imprimir as bordas esquerda e direita */
-		gotoxy(186, bordaEsquerda, i); //printf("%c", 186); /* ║ */
-		gotoxy(186, bordaDireita, i); //printf("%c", 186); /* ║ */
+		posicionaCursorNaTela(186, bordaEsquerda, i); //printf("%c", 186); /* ║ */
+		posicionaCursorNaTela(186, bordaDireita, i); //printf("%c", 186); /* ║ */
 	}
 	for (i = bordaEsquerda + 1; i < bordaDireita; i++) {  /* para imprimir as bordas superiores e inferiores */
-		gotoxy(205, i, bordaSuperior); //printf("%c", 205); /* ═ */
-		gotoxy(205, i, bordaInferior); //printf("%c", 205); /* ═ */
+		posicionaCursorNaTela(205, i, bordaSuperior); //printf("%c", 205); /* ═ */
+		posicionaCursorNaTela(205, i, bordaInferior); //printf("%c", 205); /* ═ */
 	}
-	gotoxy(201, bordaEsquerda, bordaSuperior); //printf("%c", 201); /* ╔ */
-	gotoxy(200, bordaEsquerda, bordaInferior); //printf("%c", 200); /* ╚ */
-	gotoxy(187, bordaDireita, bordaSuperior); //printf("%c", 187); /* ╗ */
-	gotoxy(188, bordaDireita, bordaInferior); //printf("%c", 188); /* ╝ */
+	posicionaCursorNaTela(201, bordaEsquerda, bordaSuperior); //printf("%c", 201); /* ╔ */
+	posicionaCursorNaTela(200, bordaEsquerda, bordaInferior); //printf("%c", 200); /* ╚ */
+	posicionaCursorNaTela(187, bordaDireita, bordaSuperior); //printf("%c", 187); /* ╗ */
+	posicionaCursorNaTela(188, bordaDireita, bordaInferior); //printf("%c", 188); /* ╝ */
 
 }
 
@@ -169,7 +169,7 @@ void imprimePalavraSnake() {
 
 		for (j = 0; j < 8; j++) { /* O caractere e de 8 linhas */
 
-			gotoxy(NULL,linha, coluna);
+			posicionaCursorNaTela(NULL, linha, coluna);
 			c = arteSnake[nLetra][j];
 
 			for (b = 0; b < tamanhoDaLetraEmBits; b++) { /* 16 bits */
@@ -188,6 +188,6 @@ void imprimePalavraSnake() {
 		coluna = colunaInicial;
 	}
 
-	printf(ANSI_COLOR_AZUL " %c" ANSI_COLOR_RESET, 'R');              /*imprime um caractere ®*/
+	printf(ANSI_COLOR_AZUL " %c" ANSI_COLOR_RESET, 'R');
 
 }

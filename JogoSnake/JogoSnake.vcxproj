@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Colisao.c" />
     <ClCompile Include="Direcao.c" />
+    <ClCompile Include="Maca.c" />
     <ClCompile Include="Mapa.c" />
     <ClCompile Include="Menu.c" />
     <ClCompile Include="Origem.c" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Colisao.h" />
     <ClInclude Include="Cores.h" />
     <ClInclude Include="Direcao.h" />
+    <ClInclude Include="Maca.h" />
     <ClInclude Include="Mapa.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Posicao.h" />
