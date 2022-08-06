@@ -12,40 +12,42 @@
 #include "Mapa.h"
 #include "Colisao.h"
 #include "Maca.h"
+#include "Cobra.h"
 
 
 void jogar() {
 
 	iniciaMapa();
-	DIRECAO *direcao = criaDirecao();
-	POSICAO *cobraPosicao = sorteiaPosicao(direcao);
+	COBRA *cobra = criaCobra();
 	MACA *maca = criaMaca();
 
+	imprimeCobra(cobra);
 	atualizaMaca(maca);
 
-
 	int tecla = teclaPrecionada;
+	_getch();
 	while (tecla != KEY_ESC) {
 
 		if (_kbhit()) {
 			tecla = teclaPrecionada();
-			atualizaDirecao(tecla, direcao);
+			atualizaDirecao(tecla, cobra->direcao);
 		}
 
-		char cabecaColisao = verificaObstaculo(cobraPosicao, direcao);
+		char cabecaColisao = verificaObstaculo(cobra->cabeca, cobra->direcao);
 
 		if (verificarColisao(cabecaColisao)) {
 			break;
 		}
 		
 		if (verificaMaca(cabecaColisao)) {
+			Beep(400, 100);
+			alimentaCobra(cobra);
 			atualizaMaca(maca);
 		}
 
-
-			atualizaPosicaoSnake(cobraPosicao, direcao);
-		
-
+		atualizaCobra(cobra);
+		reposicionaCursorNoFinal();
+		Sleep(40);
 
 	}
 

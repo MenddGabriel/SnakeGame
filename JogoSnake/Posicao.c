@@ -36,23 +36,3 @@ POSICAO *sorteiaPosicao(DIRECAO *direcao) {
 
 	return posicao;
 }
-
-void atualizaPosicaoSnake(POSICAO *posicao, DIRECAO *direcao) {
-
-	int x = posicao->posX += direcao->incrementaX;
-	int y = posicao->posY += direcao->incrementaY;
-	int apaga_x = x;
-	int apaga_y = y;
-
-	posicionaCursorNaTela(NULL, x, y);
-
-	printf(ANSI_COLOR_VERDE "%c%c" ANSI_COLOR_RESET, 219, 219);
-	reposicionaCursorNoFinal();
-
-	Sleep(40);
-
-	posicionaCursorNaTela(NULL,x, y);
-	printf("  ");
-
-}
-

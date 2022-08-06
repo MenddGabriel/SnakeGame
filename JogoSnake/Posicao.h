@@ -11,4 +11,3 @@ typedef struct POSICAO {
 
 POSICAO *criaPosicao();
 POSICAO *sorteiaPosicao(DIRECAO *direcao);
-void atualizaPosicaoSnake(POSICAO *posicao, DIRECAO *direcao);

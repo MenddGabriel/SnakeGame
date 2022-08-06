@@ -3,6 +3,7 @@
 #include "Maca.h"
 #include "Posicao.h"
 #include "Tela.h"
+#include "Cores.h"
 
 void * criaMaca() {
 	MACA *maca = (MACA*)malloc(sizeof(MACA));
@@ -15,7 +16,8 @@ void * criaMaca() {
 
 void imprimeMaca(MACA *maca) {
 	POSICAO *posicao = maca->posicao;
-	posicionaCursorNaTela(posicao->objeto, posicao->posX, posicao->posY);
+	posicionaCursorNaTela(NULL, posicao->posX, posicao->posY);
+	printf(ANSI_COLOR_RED "%c" ANSI_COLOR_RESET, posicao->objeto);
 }
 
 void atualizaMaca(MACA *maca) {

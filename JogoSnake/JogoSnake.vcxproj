@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cobra.c" />
     <ClCompile Include="Colisao.c" />
     <ClCompile Include="Direcao.c" />
     <ClCompile Include="Maca.c" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Tela.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cobra.h" />
     <ClInclude Include="Colisao.h" />
     <ClInclude Include="Cores.h" />
     <ClInclude Include="Direcao.h" />
