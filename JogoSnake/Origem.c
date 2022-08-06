@@ -1,4 +1,5 @@
 ﻿#include <stdio.h>
+
 #include <windows.h>
 #include <conio.h>
 #include <stdlib.h>
@@ -59,11 +60,9 @@ void jogar() {
 int main() {
 
 	redimensionaJanela(LARGURA_TELA, ALTURA_TELA);
+	consoleVirtual();
 	srand(time(NULL));
 	menu();
-
-
-
 
 
 	_getch();

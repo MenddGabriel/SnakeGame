@@ -68,3 +68,13 @@ void redimensionaJanela(int Width, int Height)
 	SetConsoleScreenBufferSize(Handle, coord);            // Set Buffer Size
 	SetConsoleWindowInfo(Handle, TRUE, &Rect);            // Set Window Size
 }
+
+int consoleVirtual() {
+
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	DWORD dwMode = 0;
+	GetConsoleMode(hOut, &dwMode);
+	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+	SetConsoleMode(hOut, dwMode);
+
+}
